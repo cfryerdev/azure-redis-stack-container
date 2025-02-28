@@ -8,7 +8,7 @@ Our Dockerfile uses `redis/redis-stack:latest`, which as of February 2025 includ
 
 | Component | Version | Description |
 |-----------|---------|-------------|
-| Redis | 7.2.x | The core Redis server |
+| Redis | 7.4.x | The core Redis server |
 | RedisJSON | 2.4.x | Native JSON data type and operations |
 | RediSearch | 2.6.x | Full-text search engine for Redis |
 | RedisGraph | 2.10.x | Graph database functionality |
