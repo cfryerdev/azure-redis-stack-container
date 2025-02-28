@@ -119,6 +119,35 @@ For automated backups, consider setting up a cron job:
 0 2 * * * /path/to/azure-redis-stack/backup.sh /path/to/backup/directory
 ```
 
+## Setting Up Monitoring with Application Insights
+
+The Redis Stack container can be monitored using Azure Application Insights through a sidecar container:
+
+1. Create an Application Insights resource in the Azure Portal or use the provided setup script:
+
+```bash
+cd monitoring
+./setup-app-insights.sh
+```
+
+2. Once you have your Application Insights connection string, add it to your `.env` file:
+
+```
+APP_INSIGHTS_CONNECTION_STRING=InstrumentationKey=your-key-here
+```
+
+3. Uncomment the `app-insights-sidecar` section in `docker-compose.yml` or use the setup script to do this automatically.
+
+4. Start your containers with monitoring enabled:
+
+```bash
+docker-compose up -d
+```
+
+5. View Redis logs and metrics in the Azure Portal under your Application Insights resource.
+
+For more detailed monitoring configuration, see [Monitoring with Application Insights](monitoring-app-insights.md).
+
 ## Customizing Configuration
 
 You can customize Redis configuration by modifying the `redis.conf` file and rebuilding the container:

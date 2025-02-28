@@ -1,18 +1,20 @@
 FROM redis/redis-stack:latest
 
+# Copy the Redis configuration file with persistence settings enabled
+COPY redis.conf /redis-stack.conf
+
+# Create directory for Redis logs (for App Insights monitoring)
+RUN mkdir -p /var/log/redis && \
+    chown redis:redis /var/log/redis
+
 # Set working directory
 WORKDIR /data
 
-# Copy custom Redis configuration if needed
-COPY redis.conf /redis-stack.conf
+# Add volume paths
+VOLUME ["/data", "/var/log/redis"]
 
-# Create volume for Redis data
-VOLUME /data
+# Expose Redis and RedisInsight ports
+EXPOSE 6379 8001
 
-# Expose Redis port
-EXPOSE 6379
-# Expose RedisInsight port
-EXPOSE 8001
-
-# Command to run Redis with the custom configuration
+# Use the configuration file from the image
 CMD ["redis-stack-server", "/redis-stack.conf"]

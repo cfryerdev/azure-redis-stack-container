@@ -1,0 +1,4 @@
+opencensus-ext-azure>=1.1.9
+opencensus-ext-logging>=0.1.0
+pytz>=2023.3
+python-json-logger>=2.0.7

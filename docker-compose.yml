@@ -12,11 +12,34 @@ services:
       - "8001:8001"  # RedisInsight port
     volumes:
       - redis-data:/data
+      - redis-logs:/var/log/redis  # Added for log access by the sidecar
     restart: always
     environment:
       - REDIS_ARGS=--requirepass ${REDIS_PASSWORD:-redispassword}
     command: redis-stack-server /redis-stack.conf
 
+  # Optional App Insights monitoring sidecar
+  # Uncomment to enable sending Redis logs to Azure Application Insights
+  # app-insights-sidecar:
+  #   build:
+  #     context: ./monitoring/app-insights-sidecar
+  #     dockerfile: Dockerfile
+  #   container_name: redis-app-insights
+  #   depends_on:
+  #     - redis-stack
+  #   volumes:
+  #     - redis-logs:/var/log/redis
+  #   environment:
+  #     - REDIS_LOG_PATH=/var/log/redis/redis.log
+  #     - APP_INSIGHTS_CONNECTION_STRING=${APP_INSIGHTS_CONNECTION_STRING}
+  #     - APP_INSIGHTS_ROLE_NAME=redis-stack
+  #     - APP_INSIGHTS_ROLE_INSTANCE=${HOSTNAME:-redis-1}
+  #     - LOG_LEVEL=info
+  #     - SAMPLING_PERCENTAGE=100
+  #   restart: always
+
 volumes:
   redis-data:
+    driver: local
+  redis-logs:  # Added for storing Redis logs
     driver: local

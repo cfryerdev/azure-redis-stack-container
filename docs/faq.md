@@ -9,6 +9,7 @@
 - [Configuration](#configuration)
 - [High Availability](#high-availability)
 - [Troubleshooting](#troubleshooting)
+- [Monitoring](#monitoring)
 
 ## Data Persistence
 
@@ -180,6 +181,45 @@ These configurations require additional setup not covered in the basic documenta
 2. Store backups in Azure Blob Storage with appropriate retention policies
 3. Consider setting up geo-replication for disaster recovery
 4. Test your restore process regularly
+
+## Monitoring
+
+### Q: How can I monitor my Redis Stack instance?
+
+This project provides monitoring capabilities through integration with Azure Application Insights:
+
+1. **Sidecar Container Pattern**: A separate container reads Redis logs and forwards them to Azure Application Insights
+2. **Azure Portal Monitoring**: View Redis logs, metrics, and performance data in the Azure Portal
+3. **Custom Dashboards**: Create custom dashboards to visualize Redis metrics and health
+4. **Alerting**: Set up alerts based on Redis log patterns or performance metrics
+
+For setup instructions, see [Monitoring with Application Insights](monitoring-app-insights.md).
+
+### Q: What Redis metrics can I monitor?
+
+The Application Insights integration captures various Redis metrics, including:
+
+- Command execution times
+- Memory usage patterns
+- Connected clients
+- Operations per second
+- Cache hit/miss ratio
+- Error rates and types
+
+You can create custom KQL (Kusto Query Language) queries in Log Analytics to extract specific metrics and build custom dashboards.
+
+### Q: How does the sidecar container work?
+
+The monitoring sidecar container:
+
+1. Mounts a shared volume with the Redis container to access log files
+2. Reads the Redis log file in real-time
+3. Parses log entries to extract structured data
+4. Enriches logs with metadata (role name, instance ID, etc.)
+5. Forwards the structured data to Azure Application Insights
+6. Implements sampling to control data volume if needed
+
+This pattern allows for monitoring without modifying the Redis container itself.
 
 ## Troubleshooting
 
