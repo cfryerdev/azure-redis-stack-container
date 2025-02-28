@@ -1,4 +1,4 @@
-# Azure Redis Stack with Persistence
+# Azure Redis Stack with Persistence / Insights
 
 A Docker-based implementation of Redis Stack with persistence, and monitoring with Azure Application Insights, similar to the Redis Enterprise offering in Azure.
 
