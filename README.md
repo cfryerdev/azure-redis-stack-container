@@ -1,5 +1,7 @@
 # Azure Redis Stack with Persistence
 
+A Docker-based implementation of Redis Stack with persistence, and monitoring with Azure Application Insights, similar to the Redis Enterprise offering in Azure.
+
 ## Summary Overview
 
 Azure Redis Stack is an enterprise-grade, containerized Redis Stack deployment solution designed for production use in Azure. It combines the full Redis Stack (Redis with modules like RedisJSON, RediSearch, RedisGraph, RedisTimeSeries, and RedisBloom) with robust data persistence mechanisms (both RDB snapshots and AOF logs), comprehensive monitoring capabilities, and flexible deployment options across various Azure services.
