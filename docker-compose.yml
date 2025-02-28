@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  redis-stack:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: azure-redis-stack
+    container_name: azure-redis-stack
+    ports:
+      - "6379:6379"  # Redis port
+      - "8001:8001"  # RedisInsight port
+    volumes:
+      - redis-data:/data
+    restart: always
+    environment:
+      - REDIS_ARGS=--requirepass ${REDIS_PASSWORD:-redispassword}
+    command: redis-stack-server /redis-stack.conf
+
+volumes:
+  redis-data:
+    driver: local
