@@ -95,7 +95,7 @@ Monitor your Redis Stack instance:
 
 This project is based on the official Redis Stack image which includes Redis and several modules:
 
-- **Redis**: v7.2.x - Core Redis server
+- **Redis**: v7.4.x - Core Redis server
 - **RedisJSON**: v2.4.x - Native JSON data type handling
 - **RediSearch**: v2.6.x - Full-text search capability
 - **RedisGraph**: v2.10.x - Graph database functionality
