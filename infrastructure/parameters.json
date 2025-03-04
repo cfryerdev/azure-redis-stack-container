@@ -1,0 +1,75 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "deploymentName": {
+      "value": "redisstack"
+    },
+    "location": {
+      "value": "eastus"
+    },
+    "environmentType": {
+      "value": "dev"
+    },
+    "deploymentType": {
+      "value": "aci"
+    },
+    "redisPassword": {
+      "value": "REPLACE_WITH_SECURE_PASSWORD"
+    },
+    "storageAccountName": {
+      "value": "redisstackstorage"
+    },
+    "fileShareName": {
+      "value": "redisdata"
+    },
+    "enableAppInsights": {
+      "value": true
+    },
+    "containerRegistryName": {
+      "value": ""
+    },
+    "containerImageName": {
+      "value": "redis/redis-stack:latest"
+    },
+    "containerCpuCores": {
+      "value": 1
+    },
+    "containerMemoryGb": {
+      "value": 2
+    },
+    "containerDnsNameLabel": {
+      "value": "redisstack"
+    },
+    "logRetentionDays": {
+      "value": 30
+    },
+    "appServiceConfig": {
+      "value": {
+        "skuName": "P1v2",
+        "skuTier": "PremiumV2",
+        "alwaysOn": true
+      }
+    },
+    "aciConfig": {
+      "value": {
+        "restartPolicy": "Always"
+      }
+    },
+    "enableVirtualNetwork": {
+      "value": false
+    },
+    "vnetAddressPrefix": {
+      "value": "10.0.0.0/16"
+    },
+    "subnetAddressPrefix": {
+      "value": "10.0.0.0/24"
+    },
+    "tags": {
+      "value": {
+        "environment": "dev",
+        "application": "redis-stack"
+      }
+    }
+  }
+}

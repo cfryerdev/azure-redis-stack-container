@@ -67,9 +67,10 @@ For local development and basic usage:
 
 For production deployment in Azure:
 
+- [Comprehensive Deployment Guide](docs/deploy.md) - Complete documentation on all deployment options and configurations
 - [Azure Container Instances (ACI) Deployment](docs/deployment-aci.md) - Simple serverless container deployment
 - [Azure App Service Deployment](docs/deployment-app-service.md) - PaaS deployment with managed infrastructure
-- More deployment options coming soon!
+- [Azure Kubernetes Service (AKS) Deployment](docs/deployment-aks.md) - Enterprise-grade Kubernetes deployment
 
 ### Architecture Diagrams
 
@@ -131,6 +132,7 @@ azure-redis-stack/
 │       └── log_forwarder.py  # Log processing script
 └── docs/                     # Documentation directory
     ├── gettingstarted.md     # Guide for getting started
+    ├── deploy.md     # Bicep deployment 
     ├── deployment-aci.md     # ACI deployment instructions
     ├── deployment-app-service.md # App Service deployment instructions
     ├── architecture.md       # Azure architecture diagrams
